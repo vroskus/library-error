@@ -1,6 +1,6 @@
 {
   "name": "@vroskus/library-error",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Error",
   "author": "Vilius Roškus <vilius@regattas.eu>",
   "license": "MIT",
@@ -9,9 +9,6 @@
     "url": "git+https://github.com/vroskus/library-error.git"
   },
   "main": "dist/index.js",
-  "files": [
-    "dist/index.js"
-  ],
   "scripts": {
     "postinstall": "npm run build",
     "build": "tsc",
