@@ -14,7 +14,6 @@
     "dist/"
   ],
   "scripts": {
-    "postinstall": "npm run build",
     "build": "tsc",
     "test": "npm run test:eslint && npm run test:e2e",
     "test:eslint": "eslint src test --fix",
