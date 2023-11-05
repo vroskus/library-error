@@ -14,7 +14,7 @@ class CustomError<
 > extends Error {
   key: string;
 
-  data: unknown | void;
+  data: Record<string, unknown> | void;
 
   name: string;
 
