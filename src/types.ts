@@ -9,7 +9,7 @@ export type $BaseErrorKey = $BaseErrorKeyEnums[keyof $BaseErrorKeyEnums];
 export type $ErrorLevel = 'error' | 'warning';
 
 export type $CustomErrorContext = {
-  data?: any | void;
+  data?: unknown | void;
   level?: $ErrorLevel | void;
   name?: string | void;
   status?: number | void;
