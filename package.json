@@ -13,6 +13,7 @@
   "files": [
     "dist/"
   ],
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "test": "npm run test:eslint && npm run test:e2e",
@@ -22,17 +23,17 @@
     "test:e2e:post": "jest-coverage-thresholds-bumper"
   },
   "dependencies": {
-    "@types/express": "4.17.20",
+    "@types/express": "4.17.21",
     "express": "4.18.2",
     "lodash": "4.17.21"
   },
   "devDependencies": {
-    "@types/jest": "29.5.7",
-    "@types/lodash": "4.14.200",
-    "@types/node": "20.8.10",
-    "@typescript-eslint/eslint-plugin": "6.9.1",
-    "@typescript-eslint/parser": "6.9.1",
-    "eslint": "8.53.0",
+    "@types/jest": "29.5.10",
+    "@types/lodash": "4.14.202",
+    "@types/node": "20.10.2",
+    "@typescript-eslint/eslint-plugin": "6.13.1",
+    "@typescript-eslint/parser": "6.13.1",
+    "eslint": "8.55.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-airbnb-typescript": "17.1.0",
     "eslint-plugin-import": "2.29.0",
@@ -44,7 +45,7 @@
     "jest-express": "1.12.0",
     "npm-check": "6.0.1",
     "ts-jest": "29.1.1",
-    "typescript": "5.2.2"
+    "typescript": "5.3.2"
   },
   "jest": {
     "preset": "ts-jest",
@@ -59,10 +60,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 35.71,
-        "functions": 57.14,
-        "lines": 50.64,
-        "statements": 50
+        "branches": 51.89,
+        "functions": 62.5,
+        "lines": 55.55,
+        "statements": 57.39
       }
     }
   }
