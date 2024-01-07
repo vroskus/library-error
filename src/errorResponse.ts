@@ -24,7 +24,7 @@ type $ErrorResponsePayload = {
   status: number;
 };
 
-const errorResponse = (res: $Response, error: Error | $CustomError): $Response => {
+const errorResponse = (res: $Response, error: $CustomError | Error): $Response => {
   // Defined or 400
   let status = Number(_.get(
     error,

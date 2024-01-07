@@ -3,8 +3,8 @@ import {
   Response,
 } from 'jest-express/lib/response';
 import {
-  baseErrorKey,
   CustomError,
+  baseErrorKey,
   errorResponse,
 } from '../src';
 

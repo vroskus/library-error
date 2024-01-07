@@ -18,7 +18,7 @@ import type {
   $CustomError,
 } from './types';
 
-export const responseHandler = (res: $Response, error?: Error | $CustomError): $Response => {
+export const responseHandler = (res: $Response, error?: $CustomError | Error): $Response => {
   // Defined or 400
   const status = Number(_.get(
     error,
@@ -75,7 +75,7 @@ export const responseHandler = (res: $Response, error?: Error | $CustomError): $
  * @param {$CustomError | Error} err - native or custom error object.
  * @param {Response} res - response object used to send the prepared error.
  */
-const errorResponse = (res: $Response, error: Error | $CustomError): $Response => {
+const errorResponse = (res: $Response, error: $CustomError | Error): $Response => {
   const errors = {
     SyntaxError: new CustomError(
       error.message,
@@ -94,7 +94,7 @@ const errorResponse = (res: $Response, error: Error | $CustomError): $Response =
     ),
   };
 
-  const output: Error | $CustomError = _.get(
+  const output: $CustomError | Error = _.get(
     errors,
     error.name,
     error,
