@@ -8,18 +8,17 @@ import _ from 'lodash';
 
 // Enums
 import {
-  baseErrorKey,
+  BaseErrorKey,
 } from './enums';
 
 // Types
 import type {
-  $BaseErrorKey,
   $CustomError,
 } from './types';
 
 type $ErrorResponsePayload = {
   data?: object | void;
-  key: $BaseErrorKey;
+  key: BaseErrorKey;
   message: string;
   status: number;
 };
@@ -34,14 +33,14 @@ const errorResponse = (res: $Response, error: $CustomError | Error): $Response =
 
   let errorResponsePayload: $ErrorResponsePayload = {
     data: undefined,
-    key: baseErrorKey.unknownError,
+    key: BaseErrorKey.unknownError,
     message: 'Unknown error',
     status,
   };
 
   const knownErrors: Record<string, $ErrorResponsePayload> = {
     SyntaxError: {
-      key: baseErrorKey.syntaxError,
+      key: BaseErrorKey.syntaxError,
       message: error.message,
       status: 400,
     },
@@ -52,10 +51,10 @@ const errorResponse = (res: $Response, error: $CustomError | Error): $Response =
     message,
   } = error;
 
-  const key: $BaseErrorKey | void = _.get(
+  const key: BaseErrorKey | void = _.get(
     error,
     'key',
-    baseErrorKey.unknownError,
+    BaseErrorKey.unknownError,
   );
 
   // If message and key are both defined
@@ -76,7 +75,7 @@ const errorResponse = (res: $Response, error: $CustomError | Error): $Response =
 
   // Expose data for error
   if (_.includes(
-    [baseErrorKey.syntaxError, baseErrorKey.parametersValidationError],
+    [BaseErrorKey.syntaxError, BaseErrorKey.parametersValidationError],
     key,
   )) {
     const data: object | void = _.get(

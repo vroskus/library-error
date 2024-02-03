@@ -1,11 +1,5 @@
 import CustomError from './CustomError';
 
-import type {
-  $BaseErrorKeyEnums,
-} from './enums';
-
-export type $BaseErrorKey = $BaseErrorKeyEnums[keyof $BaseErrorKeyEnums];
-
 export type $ErrorLevel = 'error' | 'warning';
 
 export type $CustomErrorContext = {

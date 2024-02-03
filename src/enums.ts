@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+
 /**
  *  @swagger
  *  components:
@@ -33,46 +35,24 @@
  *              - UNKNOWN_ERROR
  *              - UNSET_CONFIG_PARAMS_ERROR
  */
-export type $BaseErrorKeyEnums = {
-  alreadyAssociatedRecordsError: 'ALREADY_ASSOCIATED_RECORDS_ERROR';
-  associationActionMethodNotFoundError: 'ASSOCIATION_ACTION_METHOD_NOT_FOUND_ERROR';
-  configNotFound: 'CONFIG_NOT_FOUND';
-  dataValidationError: 'DATA_VALIDATION_ERROR';
-  duplicateKeyError: 'DUPLICATE_KEY_FOUND_ERROR';
-  entityNotFoundError: 'ENTITY_NOT_FOUND_ERROR';
-  facebookError: 'FACEBOOK_ERROR';
-  fileTooBig: 'FILE_TOO_BIG';
-  googleError: 'GOOGLE_ERROR';
-  invalidModelNameError: 'INVALID_MODEL_NAME_ERROR';
-  multipleRecordsFoundError: 'MULTIPLE_RECORDS_FOUND_ERROR';
-  notAssociatedRecordsError: 'NOT_ASSOCIATED_RECORDS_ERROR';
-  parametersValidationError: 'PARAMETERS_VALIDATION_ERROR';
-  paymentError: 'PAYMENT_ERROR';
-  responseError: 'RESPONSE_ERROR';
-  syntaxError: 'SYNTAX_ERROR';
-  unauthenticatedError: 'UNAUTHENTICATED_ERROR';
-  unknownError: 'UNKNOWN_ERROR';
-  unsetConfigParamsError: 'UNSET_CONFIG_PARAMS_ERROR';
-};
-
-export const baseErrorKey: $BaseErrorKeyEnums = Object.freeze({
-  alreadyAssociatedRecordsError: 'ALREADY_ASSOCIATED_RECORDS_ERROR',
-  associationActionMethodNotFoundError: 'ASSOCIATION_ACTION_METHOD_NOT_FOUND_ERROR',
-  configNotFound: 'CONFIG_NOT_FOUND',
-  dataValidationError: 'DATA_VALIDATION_ERROR',
-  duplicateKeyError: 'DUPLICATE_KEY_FOUND_ERROR',
-  entityNotFoundError: 'ENTITY_NOT_FOUND_ERROR',
-  facebookError: 'FACEBOOK_ERROR',
-  fileTooBig: 'FILE_TOO_BIG',
-  googleError: 'GOOGLE_ERROR',
-  invalidModelNameError: 'INVALID_MODEL_NAME_ERROR',
-  multipleRecordsFoundError: 'MULTIPLE_RECORDS_FOUND_ERROR',
-  notAssociatedRecordsError: 'NOT_ASSOCIATED_RECORDS_ERROR',
-  parametersValidationError: 'PARAMETERS_VALIDATION_ERROR',
-  paymentError: 'PAYMENT_ERROR',
-  responseError: 'RESPONSE_ERROR',
-  syntaxError: 'SYNTAX_ERROR',
-  unauthenticatedError: 'UNAUTHENTICATED_ERROR',
-  unknownError: 'UNKNOWN_ERROR',
-  unsetConfigParamsError: 'UNSET_CONFIG_PARAMS_ERROR',
-});
+export enum BaseErrorKey {
+  alreadyAssociatedRecordsError = 'ALREADY_ASSOCIATED_RECORDS_ERROR',
+  associationActionMethodNotFoundError = 'ASSOCIATION_ACTION_METHOD_NOT_FOUND_ERROR',
+  configNotFound = 'CONFIG_NOT_FOUND',
+  dataValidationError = 'DATA_VALIDATION_ERROR',
+  duplicateKeyError = 'DUPLICATE_KEY_FOUND_ERROR',
+  entityNotFoundError = 'ENTITY_NOT_FOUND_ERROR',
+  facebookError = 'FACEBOOK_ERROR',
+  fileTooBig = 'FILE_TOO_BIG',
+  googleError = 'GOOGLE_ERROR',
+  invalidModelNameError = 'INVALID_MODEL_NAME_ERROR',
+  multipleRecordsFoundError = 'MULTIPLE_RECORDS_FOUND_ERROR',
+  notAssociatedRecordsError = 'NOT_ASSOCIATED_RECORDS_ERROR',
+  parametersValidationError = 'PARAMETERS_VALIDATION_ERROR',
+  paymentError = 'PAYMENT_ERROR',
+  responseError = 'RESPONSE_ERROR',
+  syntaxError = 'SYNTAX_ERROR',
+  unauthenticatedError = 'UNAUTHENTICATED_ERROR',
+  unknownError = 'UNKNOWN_ERROR',
+  unsetConfigParamsError = 'UNSET_CONFIG_PARAMS_ERROR',
+}

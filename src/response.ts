@@ -9,12 +9,11 @@ import CustomError from './CustomError';
 
 // Enums
 import {
-  baseErrorKey,
+  BaseErrorKey,
 } from './enums';
 
 // Types
 import type {
-  $BaseErrorKey,
   $CustomError,
 } from './types';
 
@@ -28,7 +27,7 @@ export const responseHandler = (res: $Response, error?: $CustomError | Error): $
 
   const errorResponsePayload = {
     data: undefined,
-    key: baseErrorKey.unknownError,
+    key: BaseErrorKey.unknownError,
     message: 'Unknown error',
   };
 
@@ -38,10 +37,10 @@ export const responseHandler = (res: $Response, error?: $CustomError | Error): $
       message,
     } = error;
 
-    const key: $BaseErrorKey = _.get(
+    const key: BaseErrorKey = _.get(
       error,
       'key',
-      baseErrorKey.unknownError,
+      BaseErrorKey.unknownError,
     );
 
     // If message and key are both defined
@@ -55,7 +54,7 @@ export const responseHandler = (res: $Response, error?: $CustomError | Error): $
 
     // Expose data for error
     if (_.includes(
-      [baseErrorKey.syntaxError, baseErrorKey.parametersValidationError],
+      [BaseErrorKey.syntaxError, BaseErrorKey.parametersValidationError],
       key,
     )) {
       const data: unknown | void = _.get(
@@ -79,14 +78,14 @@ const errorResponse = (res: $Response, error: $CustomError | Error): $Response =
   const errors = {
     SyntaxError: new CustomError(
       error.message,
-      baseErrorKey.syntaxError,
+      BaseErrorKey.syntaxError,
       {
         level: 'warning',
       },
     ),
     UnauthorizedError: new CustomError(
       'Unauthenticated',
-      baseErrorKey.unauthenticatedError,
+      BaseErrorKey.unauthenticatedError,
       {
         level: 'warning',
         status: 401,

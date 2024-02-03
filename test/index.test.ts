@@ -3,8 +3,8 @@ import {
   Response,
 } from 'jest-express/lib/response';
 import {
+  BaseErrorKey,
   CustomError,
-  baseErrorKey,
   errorResponse,
 } from '../src';
 
@@ -57,7 +57,7 @@ describe(
 
             expect(mockResponse.json)
               .toHaveBeenCalledWith({
-                key: baseErrorKey.syntaxError,
+                key: BaseErrorKey.syntaxError,
                 message: expect.any(String),
               });
             expect(mockResponse.status)
@@ -95,7 +95,7 @@ describe(
           async () => {
             const err: $CustomError = new CustomError(
               'mandatory message field',
-              baseErrorKey.parametersValidationError,
+              BaseErrorKey.parametersValidationError,
               {
                 data: {
                   a: null,
@@ -124,7 +124,7 @@ describe(
           async () => {
             const err: $CustomError = new CustomError(
               'Lorem',
-              baseErrorKey.unknownError,
+              BaseErrorKey.unknownError,
               {
                 status: 500,
               },

@@ -4,12 +4,11 @@ import CustomError from './CustomError';
 
 // Enums
 import {
-  baseErrorKey,
+  BaseErrorKey,
 } from './enums';
 
 // Types
 import type {
-  $BaseErrorKey,
   $CustomErrorContext,
 } from './types';
 
@@ -36,7 +35,7 @@ class ResponseError<
 
     const responseErrors = {
       s401: {
-        key: baseErrorKey.unauthenticatedError,
+        key: BaseErrorKey.unauthenticatedError,
         level: 'warning',
         message: 'Unauthenticated',
       },
@@ -49,7 +48,7 @@ class ResponseError<
       message,
     }: {
       data: Record<string, unknown>,
-      key: $BaseErrorKey,
+      key: BaseErrorKey,
       level: 'error' | 'warning',
       message: string,
     } = _.get(
@@ -67,7 +66,7 @@ class ResponseError<
           ),
           responseStatus: status,
         },
-        key: baseErrorKey.responseError,
+        key: BaseErrorKey.responseError,
         level: 'error',
         message: 'Response error',
       },
