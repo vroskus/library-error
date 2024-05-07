@@ -57,7 +57,7 @@ export const responseHandler = (res: $Response, error?: $CustomError | Error): $
       [BaseErrorKey.syntaxError, BaseErrorKey.parametersValidationError],
       key,
     )) {
-      const data: unknown | void = _.get(
+      const data: Record<string, unknown> | undefined = _.get(
         error,
         'data',
       );

@@ -25,7 +25,7 @@ class ResponseError<
   name: string;
 
   constructor(error: E, ...params) {
-    // @ts-ignore
+    // @ts-expect-error
     super(...params);
 
     const status = _.get(
