@@ -18,7 +18,7 @@
     "postinstall": "node ./scripts/postinstall.js",
     "build": "tsc",
     "test": "npm run test:eslint && npm run test:e2e",
-    "test:eslint": "eslint src test --fix",
+    "test:eslint": "eslint src test scripts --fix",
     "test:e2e": "npm run test:e2e:run && npm run test:e2e:post",
     "test:e2e:run": "jest --ci --colors",
     "test:e2e:post": "jest-coverage-thresholds-bumper"

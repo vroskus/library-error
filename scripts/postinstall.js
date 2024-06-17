@@ -1,25 +1,27 @@
+/* eslint-disable no-console,@typescript-eslint/no-var-requires */
+
 const fs = require('fs');
 
 const getFilePath = (packageName, file) => {
-  const path0 = `../${packageName}/${file}`;
+  const filePath = `${packageName}/${file}`;
+  const rootPaths = [
+    '../',
+    '../../',
+    './node_modules/',
+    '../../node_modules/',
+  ];
 
-  if (fs.existsSync(path0)) {
-    return path0;
-  }
+  let foundPath = null;
 
-  const path1 = `./node_modules/${packageName}/${file}`;
+  rootPaths.forEach((rootPath) => {
+    const tryPath = `${rootPath}/${filePath}`;
 
-  if (fs.existsSync(path1)) {
-    return path1;
-  }
+    if (fs.existsSync(tryPath) && foundPath === null) {
+      foundPath = tryPath;
+    }
+  });
 
-  const path2 = `../../node_modules/${packageName}/${file}`;
-
-  if (fs.existsSync(path2)) {
-    return path2;
-  }
-
-  return null;
+  return foundPath;
 };
 
 const getFileContent = (filePath) => {
@@ -61,12 +63,12 @@ const zem = () => {
         '.send(errors.map(function (error) { return ({ type: error.type, errors: error.errors }); }));',
         '.send({message: \'Invalid request\', key: \'REQUEST_VALIDATION_ERROR\', data: errors.map(function (error) { return ({ type: error.type, errors: error.errors }); })});',
       );
-  
+
       saveFileContent(
         fullFilePath,
         updatedFileContent,
       );
-  
+
       console.log(`Updated ${packageName}`);
     } else {
       console.error(`Unable to get ${packageName}/${filePath} content`);

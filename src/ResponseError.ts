@@ -25,7 +25,7 @@ class ResponseError<
   name: string;
 
   constructor(error: E, ...params) {
-    // @ts-expect-error
+    // @ts-expect-error just extend default Error
     super(...params);
 
     const status = _.get(
