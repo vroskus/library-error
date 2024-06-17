@@ -1,3 +1,7 @@
+export {
+  validateRequest,
+} from 'zod-express-middleware';
+
 export * from './types';
 export * from './enums';
 

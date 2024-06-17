@@ -54,7 +54,10 @@ export const responseHandler = (res: $Response, error?: $CustomError | Error): $
 
     // Expose data for error
     if (_.includes(
-      [BaseErrorKey.syntaxError, BaseErrorKey.parametersValidationError],
+      [
+        BaseErrorKey.syntaxError,
+        BaseErrorKey.requestValidationError,
+      ],
       key,
     )) {
       const data: Record<string, unknown> | undefined = _.get(

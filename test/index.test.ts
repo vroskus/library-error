@@ -95,7 +95,7 @@ describe(
           async () => {
             const err: $CustomError = new CustomError(
               'mandatory message field',
-              BaseErrorKey.parametersValidationError,
+              BaseErrorKey.requestValidationError,
               {
                 data: {
                   a: null,

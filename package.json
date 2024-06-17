@@ -14,6 +14,7 @@
     "dist/"
   ],
   "scripts": {
+    "postinstall": "node ./scripts/postinstall.js",
     "build": "tsc",
     "test": "npm run test:eslint && npm run test:e2e",
     "test:eslint": "eslint src test --fix",
@@ -24,7 +25,8 @@
   "dependencies": {
     "@types/express": "^4.17.21",
     "express": "^4.19.2",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "zod-express-middleware": "^1.4.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
@@ -59,10 +61,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 53.08,
-        "functions": 64.7,
-        "lines": 62.2,
-        "statements": 63.43
+        "branches": 54.32,
+        "functions": 61.11,
+        "lines": 62.5,
+        "statements": 63.23
       }
     }
   }

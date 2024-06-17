@@ -26,8 +26,8 @@
  *              - INVALID_MODEL_NAME_ERROR
  *              - MULTIPLE_RECORDS_FOUND_ERROR
  *              - NOT_ASSOCIATED_RECORDS_ERROR
- *              - PARAMETERS_VALIDATION_ERROR
  *              - PAYMENT_ERROR
+ *              - REQUEST_VALIDATION_ERROR
  *              - RESPONSE_ERROR
  *              - SENSORS_DATA_NOT_PROVIDED_ERROR
  *              - SYNTAX_ERROR
@@ -48,8 +48,8 @@ export enum BaseErrorKey {
   invalidModelNameError = 'INVALID_MODEL_NAME_ERROR',
   multipleRecordsFoundError = 'MULTIPLE_RECORDS_FOUND_ERROR',
   notAssociatedRecordsError = 'NOT_ASSOCIATED_RECORDS_ERROR',
-  parametersValidationError = 'PARAMETERS_VALIDATION_ERROR',
   paymentError = 'PAYMENT_ERROR',
+  requestValidationError = 'REQUEST_VALIDATION_ERROR',
   responseError = 'RESPONSE_ERROR',
   syntaxError = 'SYNTAX_ERROR',
   unauthenticatedError = 'UNAUTHENTICATED_ERROR',
