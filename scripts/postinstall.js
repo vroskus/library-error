@@ -1,6 +1,12 @@
 const fs = require('fs');
 
 const getFilePath = (packageName, file) => {
+  const path0 = `../${packageName}/${file}`;
+
+  if (fs.existsSync(path0)) {
+    return path0;
+  }
+
   const path1 = `./node_modules/${packageName}/${file}`;
 
   if (fs.existsSync(path1)) {
