@@ -51,19 +51,19 @@ const errorResponse = (res: $Response, error: $CustomError | Error): $Response =
     message,
   } = error;
 
-  const key: BaseErrorKey = _.get(
+  const key = (_.get(
     error,
     'key',
-  ) || BaseErrorKey.unknownError;
+  ) || BaseErrorKey.unknownError) as BaseErrorKey;
 
   errorResponsePayload.message = message;
   errorResponsePayload.key = key;
 
   // If it is a known error
-  const knownError: $ErrorResponsePayload | undefined = _.get(
+  const knownError = _.get(
     knownErrors,
     error.name,
-  );
+  ) as $ErrorResponsePayload | undefined;
 
   if (knownError) {
     errorResponsePayload = knownError;
@@ -77,10 +77,10 @@ const errorResponse = (res: $Response, error: $CustomError | Error): $Response =
     ],
     key,
   )) {
-    const data: Record<string, unknown> | undefined = _.get(
+    const data = _.get(
       error,
       'data',
-    );
+    ) as Record<string, unknown> | undefined;
 
     errorResponsePayload.data = data;
   }

@@ -17,6 +17,12 @@ import type {
   $CustomError,
 } from './types';
 
+type $ErrorResponsePayload = {
+  data?: object | void;
+  key: BaseErrorKey;
+  message: string;
+};
+
 export const responseHandler = (res: $Response, error?: $CustomError | Error): $Response => {
   // Defined or 400
   const status = Number(_.get(
@@ -25,7 +31,7 @@ export const responseHandler = (res: $Response, error?: $CustomError | Error): $
     400,
   ));
 
-  const errorResponsePayload = {
+  const errorResponsePayload: $ErrorResponsePayload = {
     data: undefined,
     key: BaseErrorKey.unknownError,
     message: 'Unknown error',
@@ -37,11 +43,11 @@ export const responseHandler = (res: $Response, error?: $CustomError | Error): $
       message,
     } = error;
 
-    const key: BaseErrorKey = _.get(
+    const key = _.get(
       error,
       'key',
       BaseErrorKey.unknownError,
-    );
+    ) as BaseErrorKey;
 
     // If message and key are both defined
     if (!_.includes(
@@ -60,10 +66,10 @@ export const responseHandler = (res: $Response, error?: $CustomError | Error): $
       ],
       key,
     )) {
-      const data: Record<string, unknown> | undefined = _.get(
+      const data = _.get(
         error,
         'data',
-      );
+      ) as Record<string, unknown> | undefined;
 
       errorResponsePayload.data = data;
     }
