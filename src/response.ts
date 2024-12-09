@@ -23,9 +23,9 @@ type $ErrorResponsePayload = {
   message: string;
 };
 
-export const responseHandler = (res: $Response, error?: $CustomError | Error): $Response => {
+const responseHandler = (res: $Response, error?: $CustomError | Error): $Response => {
   // Defined or 400
-  const status = Number(_.get(
+  const status: number = Number(_.get(
     error,
     'status',
     400,
@@ -61,8 +61,9 @@ export const responseHandler = (res: $Response, error?: $CustomError | Error): $
     // Expose data for error
     if (_.includes(
       [
-        BaseErrorKey.syntaxError,
+        BaseErrorKey.noPermissionError,
         BaseErrorKey.requestValidationError,
+        BaseErrorKey.syntaxError,
       ],
       key,
     )) {

@@ -25,6 +25,7 @@
  *              - GOOGLE_ERROR
  *              - INVALID_MODEL_NAME_ERROR
  *              - MULTIPLE_RECORDS_FOUND_ERROR
+ *              - NO_PERMISSION_ERROR
  *              - NOT_ASSOCIATED_RECORDS_ERROR
  *              - PAYMENT_ERROR
  *              - REQUEST_VALIDATION_ERROR
@@ -47,6 +48,7 @@ export enum BaseErrorKey {
   googleError = 'GOOGLE_ERROR',
   invalidModelNameError = 'INVALID_MODEL_NAME_ERROR',
   multipleRecordsFoundError = 'MULTIPLE_RECORDS_FOUND_ERROR',
+  noPermissionError = 'NO_PERMISSION_ERROR',
   notAssociatedRecordsError = 'NOT_ASSOCIATED_RECORDS_ERROR',
   paymentError = 'PAYMENT_ERROR',
   requestValidationError = 'REQUEST_VALIDATION_ERROR',
