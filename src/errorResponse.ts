@@ -72,8 +72,9 @@ const errorResponse = (res: $Response, error: $CustomError | Error): $Response =
   // Expose data for error
   if (_.includes(
     [
-      BaseErrorKey.syntaxError,
+      BaseErrorKey.noPermissionError,
       BaseErrorKey.requestValidationError,
+      BaseErrorKey.syntaxError,
     ],
     key,
   )) {
