@@ -23,12 +23,15 @@ type $ErrorResponsePayload = {
   message: string;
 };
 
+const errorStatus: number = 400;
+const unauthStatus: number = 401;
+
 const responseHandler = (res: $Response, error?: $CustomError | Error): $Response => {
   // Defined or 400
   const status: number = Number(_.get(
     error,
     'status',
-    400,
+    errorStatus,
   ));
 
   const errorResponsePayload: $ErrorResponsePayload = {
@@ -98,7 +101,7 @@ const errorResponse = (res: $Response, error: $CustomError | Error): $Response =
       BaseErrorKey.unauthenticatedError,
       {
         level: 'warning',
-        status: 401,
+        status: unauthStatus,
       },
     ),
   };

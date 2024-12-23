@@ -13,6 +13,8 @@ import type {
   $CustomError,
 } from '../src/types';
 
+const errorStatus: number = 400;
+
 describe(
   'error-handler middleware',
   () => {
@@ -61,7 +63,7 @@ describe(
                 message: expect.any(String),
               });
             expect(mockResponse.status)
-              .toHaveBeenCalledWith(400);
+              .toHaveBeenCalledWith(errorStatus);
           },
         );
 
@@ -86,7 +88,7 @@ describe(
                 message: customErrMessage,
               });
             expect(mockResponse.status)
-              .toHaveBeenCalledWith(400);
+              .toHaveBeenCalledWith(errorStatus);
           },
         );
 
@@ -115,7 +117,7 @@ describe(
                 message: expect.any(String),
               });
             expect(mockResponse.status)
-              .toHaveBeenCalledWith(400);
+              .toHaveBeenCalledWith(errorStatus);
           },
         );
 

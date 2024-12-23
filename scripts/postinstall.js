@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
-
 const fs = require('fs');
+
+const zeroValue: number = 0;
 
 const getFilePath = (packageName, file) => {
   const filePath = `${packageName}/${file}`;
@@ -69,16 +69,16 @@ const zem = () => {
         updatedFileContent,
       );
 
-      console.log(`Updated ${packageName}`);
+      console.info(`Updated ${packageName}`);
     } else {
       console.error(`Unable to get ${packageName}/${filePath} content`);
 
-      process.exit(0);
+      process.exit(zeroValue);
     }
   } else {
     console.error(`Unable to get ${packageName}/${filePath}`);
 
-    process.exit(0);
+    process.exit(zeroValue);
   }
 };
 

@@ -23,12 +23,14 @@ type $ErrorResponsePayload = {
   status: number;
 };
 
+const errorStatus: number = 400;
+
 const errorResponse = (res: $Response, error: $CustomError | Error): $Response => {
   // Defined or 400
   let status = Number(_.get(
     error,
     'status',
-    400,
+    errorStatus,
   ));
 
   let errorResponsePayload: $ErrorResponsePayload = {
@@ -42,7 +44,7 @@ const errorResponse = (res: $Response, error: $CustomError | Error): $Response =
     SyntaxError: {
       key: BaseErrorKey.syntaxError,
       message: error.message,
-      status: 400,
+      status: errorStatus,
     },
   };
 
