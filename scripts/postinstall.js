@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const zeroValue: number = 0;
+const zeroValue = 0;
 
 const getFilePath = (packageName, file) => {
   const filePath = `${packageName}/${file}`;
