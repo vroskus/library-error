@@ -1,6 +1,5 @@
 import CustomError from './CustomError';
 
-/* eslint-disable perfectionist/sort-modules */
 export type $ErrorLevel = 'error' | 'warning';
 
 export type $CustomErrorContext = {
