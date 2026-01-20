@@ -11,24 +11,20 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist/",
-    "scripts/"
+    "dist/"
   ],
   "scripts": {
-    "postinstall": "node ./scripts/postinstall.js",
     "build": "tsc",
-    "test": "npm run test:eslint && npm run test:e2e",
-    "test:eslint": "eslint src test scripts --fix",
+    "test": "npm run test:eslint && npm run test:type && npm run test:e2e",
+    "test:eslint": "eslint src test --fix",
+    "test:type": "tsc",
     "test:e2e": "npm run test:e2e:run && npm run test:e2e:post",
     "test:e2e:run": "jest --ci --colors",
     "test:e2e:post": "jest-coverage-thresholds-bumper"
   },
   "dependencies": {
     "@types/express": "^5.0.6",
-    "express": "^5.2.1",
-    "lodash": "^4.17.21",
-    "zod": "^3.24.2",
-    "zod-express-middleware": "^1.4.0"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
@@ -54,10 +50,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 62.85,
-        "functions": 68.75,
-        "lines": 73.87,
-        "statements": 73.94
+        "branches": 75.43,
+        "functions": 92.3,
+        "lines": 96.47,
+        "statements": 95.65
       }
     }
   }

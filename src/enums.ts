@@ -17,7 +17,6 @@
  *              - ALREADY_ASSOCIATED_RECORDS_ERROR
  *              - ASSOCIATION_ACTION_METHOD_NOT_FOUND_ERROR
  *              - CONFIG_NOT_FOUND
- *              - DATA_VALIDATION_ERROR
  *              - DUPLICATE_KEY_FOUND_ERROR
  *              - ENTITY_NOT_FOUND_ERROR
  *              - FACEBOOK_ERROR
@@ -30,6 +29,7 @@
  *              - PAYMENT_ERROR
  *              - REQUEST_VALIDATION_ERROR
  *              - RESPONSE_ERROR
+ *              - RESPONSE_VALIDATION_ERROR
  *              - SENSORS_DATA_NOT_PROVIDED_ERROR
  *              - SYNTAX_ERROR
  *              - UNAUTHENTICATED_ERROR
@@ -40,7 +40,6 @@ export enum BaseErrorKey {
   alreadyAssociatedRecordsError = 'ALREADY_ASSOCIATED_RECORDS_ERROR',
   associationActionMethodNotFoundError = 'ASSOCIATION_ACTION_METHOD_NOT_FOUND_ERROR',
   configNotFound = 'CONFIG_NOT_FOUND',
-  dataValidationError = 'DATA_VALIDATION_ERROR',
   duplicateKeyError = 'DUPLICATE_KEY_FOUND_ERROR',
   entityNotFoundError = 'ENTITY_NOT_FOUND_ERROR',
   facebookError = 'FACEBOOK_ERROR',
@@ -53,6 +52,7 @@ export enum BaseErrorKey {
   paymentError = 'PAYMENT_ERROR',
   requestValidationError = 'REQUEST_VALIDATION_ERROR',
   responseError = 'RESPONSE_ERROR',
+  responseValidationError = 'RESPONSE_VALIDATION_ERROR',
   syntaxError = 'SYNTAX_ERROR',
   unauthenticatedError = 'UNAUTHENTICATED_ERROR',
   unknownError = 'UNKNOWN_ERROR',
