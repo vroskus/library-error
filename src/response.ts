@@ -54,7 +54,10 @@ const responseHandler = (res: $Response, error?: $CustomError | Error): $Respons
 
     // If message and key are both defined
     if (!_.includes(
-      [message, key],
+      [
+        message,
+        key,
+      ],
       undefined,
     )) {
       errorResponsePayload.message = message;
