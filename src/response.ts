@@ -25,6 +25,7 @@ type $ErrorResponsePayload = {
 
 const errorStatus: number = 400;
 const unauthStatus: number = 401;
+const forbiddenStatus: number = 403;
 
 const responseHandler = (res: $Response, error?: $CustomError | Error): $Response => {
   // Defined or 400
@@ -92,6 +93,14 @@ const responseHandler = (res: $Response, error?: $CustomError | Error): $Respons
  */
 const errorResponse = (res: $Response, error: $CustomError | Error): $Response => {
   const errors = {
+    NoPermissionError: new CustomError(
+      'Unauthenticated',
+      BaseErrorKey.noPermissionError,
+      {
+        level: 'warning',
+        status: forbiddenStatus,
+      },
+    ),
     SyntaxError: new CustomError(
       error.message,
       BaseErrorKey.syntaxError,
