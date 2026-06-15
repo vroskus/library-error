@@ -27,6 +27,7 @@
  *              - NO_PERMISSION_ERROR
  *              - NOT_ASSOCIATED_RECORDS_ERROR
  *              - PAYMENT_ERROR
+ *              - REQUEST_ERROR
  *              - REQUEST_VALIDATION_ERROR
  *              - RESPONSE_ERROR
  *              - RESPONSE_VALIDATION_ERROR
@@ -50,6 +51,7 @@ export enum BaseErrorKey {
   noPermissionError = 'NO_PERMISSION_ERROR',
   notAssociatedRecordsError = 'NOT_ASSOCIATED_RECORDS_ERROR',
   paymentError = 'PAYMENT_ERROR',
+  requestError = 'REQUEST_ERROR',
   requestValidationError = 'REQUEST_VALIDATION_ERROR',
   responseError = 'RESPONSE_ERROR',
   responseValidationError = 'RESPONSE_VALIDATION_ERROR',

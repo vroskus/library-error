@@ -18,15 +18,15 @@ import type {
 } from './types';
 
 type $ErrorResponsePayload = {
-  data?: object | void;
-  key: BaseErrorKey;
+  data?: Record<string, unknown>;
+  key: string;
   message: string;
 };
 
 const errorStatus: number = 400;
 const unauthStatus: number = 401;
 
-const responseHandler = (res: $Response, error?: $CustomError | Error): $Response => {
+const responseHandler = (res: $Response, error: $CustomError | Error): $Response => {
   // Defined or 400
   const status: number = Number(_.get(
     error,
@@ -46,11 +46,11 @@ const responseHandler = (res: $Response, error?: $CustomError | Error): $Respons
       message,
     } = error;
 
-    const key = _.get(
+    const key: string = _.get(
       error,
       'key',
       BaseErrorKey.unknownError,
-    ) as BaseErrorKey;
+    );
 
     // If message and key are both defined
     if (!_.includes(
@@ -70,6 +70,7 @@ const responseHandler = (res: $Response, error?: $CustomError | Error): $Respons
         BaseErrorKey.noPermissionError,
         BaseErrorKey.requestValidationError,
         BaseErrorKey.syntaxError,
+        BaseErrorKey.requestError,
       ],
       key,
     )) {
@@ -92,6 +93,18 @@ const responseHandler = (res: $Response, error?: $CustomError | Error): $Respons
  */
 const errorResponse = (res: $Response, error: $CustomError | Error): $Response => {
   const errors = {
+    AxiosError: new CustomError(
+      'Request error',
+      BaseErrorKey.requestError,
+      {
+        data: _.get(
+          error,
+          'response.data',
+        ),
+        level: 'error',
+        status: errorStatus,
+      },
+    ),
     SyntaxError: new CustomError(
       error.message,
       BaseErrorKey.syntaxError,
