@@ -107,7 +107,7 @@ const errorResponse = (res: $Response, error: $CustomError | Error): $Response =
       },
     ),
     NoPermissionError: new CustomError(
-      'Unauthenticated',
+      error.message || 'No permission',
       BaseErrorKey.noPermissionError,
       {
         level: 'warning',
