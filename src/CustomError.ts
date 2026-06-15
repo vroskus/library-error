@@ -14,13 +14,13 @@ class CustomError<
 > extends Error {
   key: string;
 
-  data: Record<string, unknown> | void;
+  data: Record<string, unknown> | undefined;
 
   name: string;
 
-  status: number | void;
+  status: number | undefined;
 
-  level: $ErrorLevel | void;
+  level: $ErrorLevel | undefined;
 
   constructor(message: M, key?: K, context?: C, ...params) {
     // Pass remaining arguments (including vendor specific ones) to parent constructor
