@@ -5,6 +5,7 @@ import type {
 
 // Helpers
 import _ from 'lodash';
+import axios from 'axios';
 import CustomError from './CustomError';
 
 // Enums
@@ -23,16 +24,18 @@ type $ErrorResponsePayload = {
   message: string;
 };
 
-const errorStatus: number = 400;
-const unauthStatus: number = 401;
-const forbiddenStatus: number = 403;
+const statusCode: Record<string, number> = {
+  error: 400,
+  forbidden: 403,
+  unauthenticated: 401,
+};
 
 const responseHandler = (res: $Response, error: $CustomError | Error): $Response => {
   // Defined or 400
   const status: number = Number(_.get(
     error,
     'status',
-    errorStatus,
+    statusCode.error,
   ));
 
   const errorResponsePayload: $ErrorResponsePayload = {
@@ -103,7 +106,7 @@ const errorResponse = (res: $Response, error: $CustomError | Error): $Response =
           'response.data',
         ),
         level: 'error',
-        status: errorStatus,
+        status: statusCode.error,
       },
     ),
     NoPermissionError: new CustomError(
@@ -111,7 +114,7 @@ const errorResponse = (res: $Response, error: $CustomError | Error): $Response =
       BaseErrorKey.noPermissionError,
       {
         level: 'warning',
-        status: forbiddenStatus,
+        status: statusCode.forbidden,
       },
     ),
     SyntaxError: new CustomError(
@@ -126,16 +129,20 @@ const errorResponse = (res: $Response, error: $CustomError | Error): $Response =
       BaseErrorKey.unauthenticatedError,
       {
         level: 'warning',
-        status: unauthStatus,
+        status: statusCode.unauthenticated,
       },
     ),
   };
 
-  const output: $CustomError | Error = _.get(
-    errors,
-    error.name,
-    error,
-  );
+  let output: $CustomError | Error = error;
+
+  if (Object.keys(errors).includes(error.name)) {
+    output = errors[error.name];
+  }
+
+  if (axios.isAxiosError(error)) {
+    output = errors.AxiosError;
+  }
 
   return responseHandler(
     res,

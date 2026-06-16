@@ -2,6 +2,7 @@
 import {
   Response,
 } from 'jest-express/lib/response';
+import axios from 'axios';
 
 import {
   BaseErrorKey,
@@ -14,7 +15,10 @@ import type {
   $CustomError,
 } from '../src/types';
 
-const errorStatus: number = 400;
+const statusCode: Record<string, number> = {
+  error: 400,
+  notFound: 403,
+};
 
 describe(
   'errorResponse',
@@ -61,7 +65,7 @@ describe(
             message: expect.any(String),
           });
         expect(mockResponse.status)
-          .toHaveBeenCalledWith(errorStatus);
+          .toHaveBeenCalledWith(statusCode.error);
       },
     );
 
@@ -86,7 +90,7 @@ describe(
             message: customErrMessage,
           });
         expect(mockResponse.status)
-          .toHaveBeenCalledWith(errorStatus);
+          .toHaveBeenCalledWith(statusCode.error);
       },
     );
 
@@ -115,7 +119,7 @@ describe(
             message: expect.any(String),
           });
         expect(mockResponse.status)
-          .toHaveBeenCalledWith(errorStatus);
+          .toHaveBeenCalledWith(statusCode.error);
       },
     );
 
@@ -139,6 +143,30 @@ describe(
           .toHaveBeenCalled();
         expect(mockResponse.status)
           .toHaveBeenCalledWith(err.status);
+      },
+    );
+
+    it(
+      'should handle axios errors',
+      async () => {
+        const err = new axios.AxiosError(
+          'AxiosError',
+          '',
+          undefined,
+          {
+            status: statusCode.notFound,
+          },
+        );
+
+        errorResponse(
+          mockResponse,
+          err,
+        );
+
+        expect(mockResponse.json)
+          .toHaveBeenCalled();
+        expect(mockResponse.status)
+          .toHaveBeenCalledWith(statusCode.error);
       },
     );
   },
